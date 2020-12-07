@@ -25,8 +25,6 @@ class PokemonRecyclerViewFragment : Fragment() {
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
 
-    private lateinit var menu: Filter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -79,6 +77,22 @@ class PokemonRecyclerViewFragment : Fragment() {
 
     override fun onPrepareOptionsMenu(menu: Menu) {
         menu.clear()
+
+        var id = 101
+        val clear = menu.add(Menu.NONE, id, id, "clear filter")
+        clear.setOnMenuItemClickListener {
+            viewModel.setRemoveFilter()
+            viewAdapter.notifyDataSetChanged()
+            true
+        }
+        val fav = menu.add(Menu.NONE, id, id, "by favourite")
+        fav.setOnMenuItemClickListener {
+            viewModel.setFilterToFavourites()
+            viewAdapter.notifyDataSetChanged()
+            true
+        }
+
+        val typesMenu = menu.addSubMenu(Menu.NONE, id, id, "by type")
         val types = mutableListOf<String>()
         viewModel.pokemonList.forEach {
             val typeS = it.type.toString()
@@ -94,9 +108,8 @@ class PokemonRecyclerViewFragment : Fragment() {
         }
         Log.i("types", types.size.toString())
 
-        var id: Int = 101
         types.forEach{
-            val typeItem: MenuItem = menu.add(
+            val typeItem: MenuItem = typesMenu.add(
                 Menu.NONE,
                 id,
                 id,
@@ -112,11 +125,11 @@ class PokemonRecyclerViewFragment : Fragment() {
 
             id++
         }
-
         return super.onPrepareOptionsMenu(menu)
     }
 
     private fun onTypeFilter(typeStr:String){
         viewModel.setFilterToType(typeStr)
+        viewAdapter.notifyDataSetChanged()
     }
 }
