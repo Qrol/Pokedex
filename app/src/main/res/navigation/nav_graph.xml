@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pokemonListFragment">
+    <fragment
+        android:id="@+id/pokemonListFragment"
+        android:name="com.example.pokedex.list.PokemonRecyclerViewFragment"
+        android:label="pokemon_list_fragment"
+        tools:layout="@layout/pokemon_rv_fragment" >
+        <action
+            android:id="@+id/action_pokemonListFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.pokedex.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="pokemonPosition"
+            app:argType="integer" />
+    </fragment>
+</navigation>

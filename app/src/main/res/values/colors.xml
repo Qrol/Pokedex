@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="poison">#32CD32</color>
+    <color name="fire">#DC143C</color>
+    <color name="ground">#A0522D</color>
+    <color name="normal">#696969</color>
+
+</resources>
