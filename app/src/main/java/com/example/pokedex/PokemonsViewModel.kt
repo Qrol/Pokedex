@@ -11,6 +11,7 @@ class PokemonsViewModel : ViewModel() {
         Log.i("PokemonsViewModel", "CreatePokemons")
         createPokemons()
         sortByName()
+        filteredList = pokemonList
     }
 
     private fun createPokemons(){
@@ -33,7 +34,6 @@ class PokemonsViewModel : ViewModel() {
             PokemonData("Zubat", PokemonType.Poison,
                 "It emits ultrasonic waves from its mouth to check its surroundings. Even in tight caves, Zubat flies around with skill.")
         )
-        filteredList = pokemonList
     }
 
     fun sortByName(){
@@ -68,5 +68,4 @@ class PokemonsViewModel : ViewModel() {
         val isFav = filteredList[position].isFavourite
         filteredList[position].isFavourite = !isFav
     }
-
 }

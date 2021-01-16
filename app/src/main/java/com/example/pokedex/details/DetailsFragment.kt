@@ -12,20 +12,12 @@ import com.example.pokedex.R
 import com.example.pokedex.databinding.FragmentDetailsBinding
 import com.example.pokedex.databinding.PokemonRvFragmentBinding
 
-class DetailsFragment : Fragment() {
-    private var pokemonId: Int? = null
+class DetailsFragment(private val pokemonId: Int?) : Fragment() {
 
     private lateinit var viewModel: PokemonsViewModel
     private lateinit var binding: FragmentDetailsBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            pokemonId = it.getInt("pokemonPosition")
-        }
-        Log.i("onCreate", pokemonId.toString())
 
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
