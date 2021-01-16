@@ -7,7 +7,8 @@
 
     <ImageView
         android:id="@+id/enemyIV"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/ekans" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ekans"
+        android:adjustViewBounds="true"/>
 </LinearLayout>
